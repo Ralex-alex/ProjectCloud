@@ -3758,3 +3758,221 @@ Processing by ProjectsController#show as HTML
 Completed 200 OK in 392ms (Views: 5.2ms | ActiveRecord: 0.9ms (3 queries, 0 cached) | GC: 0.0ms)
 
 
+Started GET "/projects" for ::1 at 2024-12-19 19:54:38 +0000
+Started GET "/projects" for ::1 at 2024-12-19 19:54:38 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (4.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='TaskManagementSystem'*/[0m
+  
+ActionController::RoutingError (No route matches [GET] "/projects"):
+  
+Processing by ProjectsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Exists? (2.6ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" LIMIT 1 /*action='index',application='TaskManagementSystem',controller='projects'*/[0m
+  ↳ app/views/projects/index.html.erb:5
+  [1m[36mProject Load (1.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='TaskManagementSystem',controller='projects'*/[0m
+  ↳ app/views/projects/index.html.erb:15
+  Rendered projects/index.html.erb within layouts/application (Duration: 200.3ms | GC: 0.2ms)
+Importmap skipped missing path: @hotwired--turbo-rails.js
+Importmap skipped missing path: @hotwired--turbo.js
+Importmap skipped missing path: @rails--actioncable--src.js
+Importmap skipped missing path: @hotwired--turbo-rails.js
+Importmap skipped missing path: @hotwired--turbo.js
+Importmap skipped missing path: @rails--actioncable--src.js
+  Rendered layout layouts/application.html.erb (Duration: 223.0ms | GC: 0.2ms)
+Completed 200 OK in 3317ms (Views: 183.8ms | ActiveRecord: 52.2ms (2 queries, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/projects/12/edit" for ::1 at 2024-12-19 19:55:27 +0000
+Processing by ProjectsController#edit as HTML
+  Parameters: {"id"=>"12"}
+Started GET "/projects/12/edit" for ::1 at 2024-12-19 19:55:29 +0000
+Processing by ProjectsController#edit as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mProject Load (15.6ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = 12 LIMIT 1 /*action='edit',application='TaskManagementSystem',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:44:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering projects/edit.html.erb within layouts/application
+  Rendered projects/_form.html.erb (Duration: 169.1ms | GC: 0.3ms)
+  Rendered projects/edit.html.erb within layouts/application (Duration: 225.4ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 251.2ms | GC: 0.5ms)
+Completed 200 OK in 3992ms (Views: 258.5ms | ActiveRecord: 15.5ms (1 query, 0 cached) | GC: 0.8ms)
+
+
+  [1m[36mProject Load (2.6ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = 12 LIMIT 1 /*action='edit',application='TaskManagementSystem',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:44:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering projects/edit.html.erb within layouts/application
+  Rendered projects/_form.html.erb (Duration: 11.5ms | GC: 0.0ms)
+  Rendered projects/edit.html.erb within layouts/application (Duration: 16.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 24.7ms | GC: 0.0ms)
+Completed 200 OK in 2453ms (Views: 26.6ms | ActiveRecord: 2.5ms (1 query, 0 cached) | GC: 0.8ms)
+
+
+Started PATCH "/projects/12" for ::1 at 2024-12-19 19:55:38 +0000
+Processing by ProjectsController#update as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "project"=>{"name"=>"asflafa", "description"=>"hello"}, "commit"=>"Update Project", "id"=>"12"}
+  [1m[36mProject Load (0.8ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = 12 LIMIT 1 /*action='update',application='TaskManagementSystem',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:44:in `set_project'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*action='update',application='TaskManagementSystem',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:28:in `update'
+  [1m[36mProject Update (11.9ms)[0m  [1m[33mUPDATE "projects" SET "description" = 'hello', "updated_at" = '2024-12-19 19:55:39.823174' WHERE "projects"."id" = 12 /*action='update',application='TaskManagementSystem',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:28:in `update'
+  [1m[36mTRANSACTION (10.9ms)[0m  [1m[35mCOMMIT /*action='update',application='TaskManagementSystem',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:28:in `update'
+Redirected to http://localhost:3000/projects/12
+Completed 302 Found in 1582ms (ActiveRecord: 23.8ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/projects/12" for ::1 at 2024-12-19 19:55:39 +0000
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mProject Load (0.8ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = 12 LIMIT 1 /*action='show',application='TaskManagementSystem',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:44:in `set_project'
+  [1m[36mTask Count (7.5ms)[0m  [1m[34mSELECT COUNT(*) AS "count_all", "tasks"."status" AS "tasks_status" FROM "tasks" WHERE "tasks"."project_id" = 12 GROUP BY "tasks"."status" /*action='show',application='TaskManagementSystem',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering projects/show.html.erb within layouts/application
+  [1m[36mTask Load (1.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = 12 /*action='show',application='TaskManagementSystem',controller='projects'*/[0m
+  ↳ app/views/projects/show.html.erb:18
+  Rendered projects/show.html.erb within layouts/application (Duration: 14.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 18.9ms | GC: 0.0ms)
+Completed 200 OK in 1414ms (Views: 19.5ms | ActiveRecord: 16.3ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/projects" for ::1 at 2024-12-19 19:55:51 +0000
+Processing by ProjectsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" LIMIT 1 /*action='index',application='TaskManagementSystem',controller='projects'*/[0m
+  ↳ app/views/projects/index.html.erb:5
+  [1m[36mProject Load (0.8ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='TaskManagementSystem',controller='projects'*/[0m
+  ↳ app/views/projects/index.html.erb:15
+  Rendered projects/index.html.erb within layouts/application (Duration: 14.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 18.7ms | GC: 0.0ms)
+Completed 200 OK in 1434ms (Views: 19.1ms | ActiveRecord: 1.6ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/projects/12/edit" for ::1 at 2024-12-19 19:56:02 +0000
+Processing by ProjectsController#edit as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mProject Load (0.9ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = 12 LIMIT 1 /*action='edit',application='TaskManagementSystem',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:44:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering projects/edit.html.erb within layouts/application
+  Rendered projects/_form.html.erb (Duration: 1.9ms | GC: 0.0ms)
+  Rendered projects/edit.html.erb within layouts/application (Duration: 3.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | GC: 0.0ms)
+Completed 200 OK in 1270ms (Views: 6.8ms | ActiveRecord: 0.9ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started PATCH "/projects/12" for ::1 at 2024-12-19 19:56:15 +0000
+Processing by ProjectsController#update as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "project"=>{"name"=>"asflafa", "description"=>"IZAVANYA"}, "commit"=>"Update Project", "id"=>"12"}
+  [1m[36mProject Load (1.7ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = 12 LIMIT 1 /*action='update',application='TaskManagementSystem',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:44:in `set_project'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN /*action='update',application='TaskManagementSystem',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:28:in `update'
+  [1m[36mProject Update (9.1ms)[0m  [1m[33mUPDATE "projects" SET "description" = 'IZAVANYA', "updated_at" = '2024-12-19 19:56:16.890705' WHERE "projects"."id" = 12 /*action='update',application='TaskManagementSystem',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:28:in `update'
+  [1m[36mTRANSACTION (9.6ms)[0m  [1m[35mCOMMIT /*action='update',application='TaskManagementSystem',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:28:in `update'
+Redirected to http://localhost:3000/projects/12
+Completed 302 Found in 1662ms (ActiveRecord: 21.1ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/projects/12" for ::1 at 2024-12-19 19:56:16 +0000
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mProject Load (0.7ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = 12 LIMIT 1 /*action='show',application='TaskManagementSystem',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:44:in `set_project'
+  [1m[36mTask Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) AS "count_all", "tasks"."status" AS "tasks_status" FROM "tasks" WHERE "tasks"."project_id" = 12 GROUP BY "tasks"."status" /*action='show',application='TaskManagementSystem',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering projects/show.html.erb within layouts/application
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = 12 /*action='show',application='TaskManagementSystem',controller='projects'*/[0m
+  ↳ app/views/projects/show.html.erb:18
+  Rendered projects/show.html.erb within layouts/application (Duration: 5.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 10.6ms | GC: 0.0ms)
+Completed 200 OK in 1272ms (Views: 12.2ms | ActiveRecord: 2.1ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/projects/" for ::1 at 2024-12-19 20:03:10 +0000
+Processing by ProjectsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Exists? (77.7ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" LIMIT 1 /*action='index',application='TaskManagementSystem',controller='projects'*/[0m
+  ↳ app/views/projects/index.html.erb:5
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='TaskManagementSystem',controller='projects'*/[0m
+  ↳ app/views/projects/index.html.erb:15
+  Rendered projects/index.html.erb within layouts/application (Duration: 83.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 84.9ms | GC: 0.0ms)
+Completed 200 OK in 472ms (Views: 2.3ms | ActiveRecord: 83.6ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started DELETE "/projects/12" for ::1 at 2024-12-19 20:03:14 +0000
+Processing by ProjectsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "commit"=>"Delete", "id"=>"12"}
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = 12 LIMIT 1 /*action='destroy',application='TaskManagementSystem',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:44:in `set_project'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='destroy',application='TaskManagementSystem',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:36:in `destroy'
+  [1m[36mTask Load (1.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = 12 /*action='destroy',application='TaskManagementSystem',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:36:in `destroy'
+  [1m[36mProject Destroy (0.6ms)[0m  [1m[31mDELETE FROM "projects" WHERE "projects"."id" = 12 /*action='destroy',application='TaskManagementSystem',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:36:in `destroy'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT /*action='destroy',application='TaskManagementSystem',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:36:in `destroy'
+Redirected to http://localhost:3000/projects
+Completed 302 Found in 405ms (ActiveRecord: 5.6ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/projects" for ::1 at 2024-12-19 20:03:14 +0000
+Processing by ProjectsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" LIMIT 1 /*action='index',application='TaskManagementSystem',controller='projects'*/[0m
+  ↳ app/views/projects/index.html.erb:5
+  Rendered projects/index.html.erb within layouts/application (Duration: 1.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.8ms | GC: 0.0ms)
+Completed 200 OK in 385ms (Views: 2.9ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/projects/new" for ::1 at 2024-12-19 20:04:10 +0000
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/_form.html.erb (Duration: 0.9ms | GC: 0.0ms)
+  Rendered projects/new.html.erb within layouts/application (Duration: 1.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.7ms | GC: 0.0ms)
+Completed 200 OK in 399ms (Views: 3.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/projects" for ::1 at 2024-12-19 20:04:20 +0000
+Processing by ProjectsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "project"=>{"name"=>"FSASAFSA", "description"=>"3214214"}, "commit"=>"Create Project"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='create',application='TaskManagementSystem',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:18:in `create'
+  [1m[36mProject Create (2.4ms)[0m  [1m[32mINSERT INTO "projects" ("name", "description", "created_at", "updated_at") VALUES ('FSASAFSA', '3214214', '2024-12-19 20:04:21.255233', '2024-12-19 20:04:21.255233') RETURNING "id" /*action='create',application='TaskManagementSystem',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT /*action='create',application='TaskManagementSystem',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:18:in `create'
+Redirected to http://localhost:3000/projects/13
+Completed 302 Found in 397ms (ActiveRecord: 3.6ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/projects/13" for ::1 at 2024-12-19 20:04:21 +0000
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"13"}
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = 13 LIMIT 1 /*action='show',application='TaskManagementSystem',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:44:in `set_project'
+  [1m[36mTask Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) AS "count_all", "tasks"."status" AS "tasks_status" FROM "tasks" WHERE "tasks"."project_id" = 13 GROUP BY "tasks"."status" /*action='show',application='TaskManagementSystem',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering projects/show.html.erb within layouts/application
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = 13 /*action='show',application='TaskManagementSystem',controller='projects'*/[0m
+  ↳ app/views/projects/show.html.erb:18
+  Rendered projects/show.html.erb within layouts/application (Duration: 2.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.7ms | GC: 0.0ms)
+Completed 200 OK in 383ms (Views: 3.7ms | ActiveRecord: 1.2ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
