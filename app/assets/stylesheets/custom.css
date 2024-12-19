@@ -1,0 +1,18 @@
+/* custom.css */
+.project-details {
+    margin-bottom: 2rem;
+  }
+  
+  .tasks-table {
+    border-spacing: 0 15px; /* Add spacing between rows */
+  }
+  
+  .tasks-table th, .tasks-table td {
+    padding: 10px;
+    vertical-align: middle;
+  }
+  
+  .tasks-table tbody tr {
+    background-color: #f9f9f9;
+  }
+  

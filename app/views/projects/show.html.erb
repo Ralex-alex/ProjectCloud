@@ -1,0 +1,33 @@
+<h2>Tasks</h2>
+
+<%= link_to 'New Task', new_project_task_path(@project), class: 'btn btn-primary mb-3' %>
+
+<div class="table-responsive">
+  <table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Deadline</th>
+        <th>Priority</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @project.tasks.each do |task| %>
+        <tr>
+          <td><%= task.title %></td>
+          <td><%= task.description %></td>
+          <td><%= task.deadline %></td>
+          <td><%= task.priority %></td>
+          <td><%= task.status %></td>
+          <td>
+            <%= link_to 'Edit', edit_project_task_path(@project, task), class: 'btn btn-warning btn-sm' %>
+            <%= link_to 'Delete', project_task_path(@project, task), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

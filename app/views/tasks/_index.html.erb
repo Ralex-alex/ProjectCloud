@@ -1,0 +1,30 @@
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Deadline</th>
+      <th>Priority</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.title %></td>
+        <td><%= task.description %></td>
+        <td><%= task.deadline %></td>
+        <td><%= task.priority %></td>
+        <td><%= task.status %></td>
+        <td>
+          <%= link_to 'Edit', edit_project_task_path(@project, task), class: 'btn btn-warning' %>
+          <%= form_with model: task, url: project_task_path(@project, task), method: :delete, class: "d-inline" do %>
+            <%= submit_tag "Delete", class: "btn btn-danger", data: { confirm: "Are you sure?" } %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
