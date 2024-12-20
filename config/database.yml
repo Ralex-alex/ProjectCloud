@@ -19,3 +19,6 @@ production:
   <<: *default
   database: task_management_system_production
 
+cable:
+  <<: *default
+  database: task_management_system_cable
