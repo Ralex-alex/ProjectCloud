@@ -13,12 +13,12 @@ NULLCMD = :
 #### Start of system configuration section. ####
 
 srcdir = .
-topdir = /home/ubuntu/.rbenv/versions/3.3.5/include/ruby-3.3.0
+topdir = /C/Ruby33-x64/include/ruby-3.3.0
 hdrdir = $(topdir)
-arch_hdrdir = /home/ubuntu/.rbenv/versions/3.3.5/include/ruby-3.3.0/x86_64-linux
+arch_hdrdir = /C/Ruby33-x64/include/ruby-3.3.0/x64-mingw-ucrt
 PATH_SEPARATOR = :
 VPATH = $(srcdir):$(arch_hdrdir)/ruby:$(hdrdir)/ruby
-prefix = $(DESTDIR)/home/ubuntu/.rbenv/versions/3.3.5
+prefix = $(DESTDIR)/C/Ruby33-x64
 rubysitearchprefix = $(rubylibprefix)/$(sitearch)
 rubyarchprefix = $(rubylibprefix)/$(arch)
 rubylibprefix = $(libdir)/$(RUBY_BASE_NAME)
@@ -56,7 +56,7 @@ includedir = $(prefix)/include
 runstatedir = $(localstatedir)/run
 localstatedir = $(prefix)/var
 sharedstatedir = $(prefix)/com
-sysconfdir = $(prefix)/etc
+sysconfdir = $(DESTDIR)
 datadir = $(datarootdir)
 datarootdir = $(prefix)/share
 libexecdir = $(exec_prefix)/libexec
@@ -68,10 +68,10 @@ archdir = $(rubyarchdir)
 CC_WRAPPER = 
 CC = gcc
 CXX = g++
-LIBRUBY = $(LIBRUBY_SO)
+LIBRUBY = lib$(RUBY_SO_NAME).dll.a
 LIBRUBY_A = lib$(RUBY_SO_NAME)-static.a
-LIBRUBYARG_SHARED = -Wl,-rpath,$(libdir) -L$(libdir) -l$(RUBY_SO_NAME)
-LIBRUBYARG_STATIC = -Wl,-rpath,$(libdir) -L$(libdir) -l$(RUBY_SO_NAME)-static $(MAINLIBS)
+LIBRUBYARG_SHARED = -l$(RUBY_SO_NAME)
+LIBRUBYARG_STATIC = -l$(RUBY_SO_NAME)-static $(MAINLIBS)
 empty =
 OUTFLAG = -o $(empty)
 COUTFLAG = -o $(empty)
@@ -80,38 +80,38 @@ CSRCFLAG = $(empty)
 RUBY_EXTCONF_H = 
 cflags   = $(optflags) $(debugflags) $(warnflags)
 cxxflags = 
-optflags = -O3 -fno-fast-math
+optflags = -O3 -fno-omit-frame-pointer -fno-fast-math
 debugflags = -ggdb3
 warnflags = -Wall -Wextra -Wdeprecated-declarations -Wdiv-by-zero -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wold-style-definition -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable -Wmisleading-indentation -Wundef
 cppflags = 
-CCDLFLAGS = -fPIC
-CFLAGS   = $(CCDLFLAGS) $(cflags)  -fPIC -Wall -O3 -pedantic -std=c99 $(ARCH_FLAG)
+CCDLFLAGS = 
+CFLAGS   = $(CCDLFLAGS) -O3 -fno-fast-math -fstack-protector-strong -Wall -O3 -pedantic -std=c99 $(ARCH_FLAG)
 INCFLAGS = -I. -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir)
-DEFS     = 
-CPPFLAGS =   $(DEFS) $(cppflags)
-CXXFLAGS = $(CCDLFLAGS)  $(ARCH_FLAG)
-ldflags  = -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed
-dldflags = -Wl,--compress-debug-sections=zlib 
+DEFS     = -D_FILE_OFFSET_BITS=64
+CPPFLAGS =   -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0600 -D__MINGW_USE_VC2005_COMPAT $(DEFS) $(cppflags)
+CXXFLAGS = $(CCDLFLAGS) -march=nocona -msahf -mtune=generic -O2 -pipe -Wp,-D_FORTIFY_SOURCE=2 -fstack-protector-strong -Wp,-D__USE_MINGW_ANSI_STDIO=1 $(ARCH_FLAG)
+ldflags  = -L. -pipe -s -fstack-protector-strong -Wl,--no-as-needed
+dldflags = -pipe -s -fstack-protector-strong -Wl,--enable-auto-image-base,--enable-auto-import $(DEFFILE)
 ARCH_FLAG = 
 DLDFLAGS = $(ldflags) $(dldflags) $(ARCH_FLAG)
 LDSHARED = $(CC) -shared
 LDSHAREDXX = $(CXX) -shared
 AR = gcc-ar
-EXEEXT = 
+EXEEXT = .exe
 
 RUBY_INSTALL_NAME = $(RUBY_BASE_NAME)
-RUBY_SO_NAME = ruby
-RUBYW_INSTALL_NAME = 
+RUBY_SO_NAME = x64-ucrt-ruby330
+RUBYW_INSTALL_NAME = $(RUBYW_BASE_NAME)
 RUBY_VERSION_NAME = $(RUBY_BASE_NAME)-$(ruby_version)
 RUBYW_BASE_NAME = rubyw
 RUBY_BASE_NAME = ruby
 
-arch = x86_64-linux
-sitearch = $(arch)
+arch = x64-mingw-ucrt
+sitearch = x64-ucrt
 ruby_version = 3.3.0
 ruby = $(bindir)/$(RUBY_BASE_NAME)
 RUBY = $(ruby)
-BUILTRUBY = $(bindir)/$(RUBY_BASE_NAME)
+BUILTRUBY = $(bindir)/$(RUBY_BASE_NAME).exe
 ruby_headers = $(hdrdir)/ruby.h $(hdrdir)/ruby/backward.h $(hdrdir)/ruby/ruby.h $(hdrdir)/ruby/defines.h $(hdrdir)/ruby/missing.h $(hdrdir)/ruby/intern.h $(hdrdir)/ruby/st.h $(hdrdir)/ruby/subst.h $(arch_hdrdir)/ruby/config.h
 
 RM = rm -f
@@ -128,10 +128,10 @@ TOUCH = exit >
 
 preload = 
 libpath = . $(libdir)
-LIBPATH =  -L. -L$(libdir) -Wl,-rpath,$(libdir)
-DEFFILE = 
+LIBPATH =  -L. -L$(libdir)
+DEFFILE = $(TARGET)-$(arch).def
 
-CLEANFILES = mkmf.log
+CLEANFILES = mkmf.log $(DEFFILE)
 DISTCLEANFILES = 
 DISTCLEANDIRS = 
 
@@ -139,7 +139,7 @@ extout =
 extout_prefix = 
 target_prefix = 
 LOCAL_LIBS = 
-LIBS = $(LIBRUBYARG_SHARED)  -lm -lpthread  -lc
+LIBS = $(LIBRUBYARG_SHARED)  -lshell32 -lws2_32 -liphlpapi -limagehlp -lshlwapi -lbcrypt  
 ORIG_SRCS = ed25519_ref10.c fe.c ge.c keypair.c open.c sc_muladd.c sc_reduce.c sha512.c sign.c verify.c
 SRCS = $(ORIG_SRCS) 
 OBJS = ed25519_ref10.o fe.o ge.o keypair.o open.o sc_muladd.o sc_reduce.o sha512.o sign.o verify.o
@@ -184,7 +184,7 @@ distclean-static::
 distclean: clean distclean-so distclean-static distclean-rb-default distclean-rb
 		-$(Q)$(RM) Makefile $(RUBY_EXTCONF_H) conftest.* mkmf.log
 		-$(Q)$(RM) core ruby$(EXEEXT) *~ $(DISTCLEANFILES)
-		-$(Q)$(RMDIRS) $(DISTCLEANDIRS) 2> /dev/null || true
+		-$(Q)$(RMDIRS) $(DISTCLEANDIRS) 2> NUL || true
 
 realclean: distclean
 install: install-so install-rb
@@ -259,11 +259,15 @@ site-install-rb: install-rb
 	$(ECHO) translating $(<)
 	$(Q) $(CC) $(INCFLAGS) $(CPPFLAGS) $(CFLAGS) $(COUTFLAG)$@ -S $(CSRCFLAG)$<
 
-$(TARGET_SO): $(OBJS) Makefile
+$(TARGET_SO): $(DEFFILE) $(OBJS) Makefile
 	$(ECHO) linking shared-object $(DLLIB)
 	-$(Q)$(RM) $(@)
 	$(Q) $(LDSHARED) -o $@ $(OBJS) $(LIBPATH) $(DLDFLAGS) $(LOCAL_LIBS) $(LIBS)
 
 
+
+$(DEFFILE): 
+	$(ECHO) generating $(@)
+	$(Q) (echo EXPORTS && echo $(TARGET_ENTRY)) > $@
 
 $(OBJS): $(HDRS) $(ruby_headers)

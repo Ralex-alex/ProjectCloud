@@ -1,39 +1,33 @@
-name: Deploy to EC2
+name: Deploy to AWS EC2
 
 on:
-  workflow_run:
-    workflows: ["CI"]  # Ensures deployment only triggers after the CI workflow
-    types:
-      - completed
+  push:
+    branches:
+      - main
 
 jobs:
   deploy:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}  # Deploy only if CI passes
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up SSH
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.EC2_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.3.5
 
-      - name: Add EC2 host to known_hosts
-        run: ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
+      - name: Build Docker Image
+        run: docker build -t task_management_system .
 
-      - name: Deploy to EC2
+      - name: Deploy to AWS EC2
         env:
-          RAILS_ENV: ${{ secrets.RAILS_ENV }}
+          SSH_PRIVATE_KEY: ${{ secrets.AWS_SSH_KEY }}
+          HOST: ${{ secrets.AWS_HOST }}
+          USERNAME: ubuntu
         run: |
-          ssh -i ~/.ssh/id_rsa ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
-          set -e
-          cd /path/to/your/app
-          git pull origin main
-          bundle install --deployment --without development test
-          bin/rails db:migrate RAILS_ENV=${RAILS_ENV}
-          bin/rails assets:precompile RAILS_ENV=${RAILS_ENV}
-          sudo systemctl restart your-app.service
-          EOF
+          echo "$SSH_PRIVATE_KEY" > private.pem
+          chmod 600 private.pem
+          ssh -i private.pem $USERNAME@$HOST "docker-compose -f /home/ubuntu/ProjectCloud/docker-compose.prod.yml up -d --build"
+

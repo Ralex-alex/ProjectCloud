@@ -1,0 +1,19 @@
+current directory: C:/Users/Castraveti murati/Desktop/CloudAppDevelopment/task_management_system/vendor/bundle/ruby/3.3.0/gems/stringio-3.1.2/ext/stringio
+C:/Ruby33-x64/bin/ruby.exe extconf.rb
+creating Makefile
+
+current directory: C:/Users/Castraveti murati/Desktop/CloudAppDevelopment/task_management_system/vendor/bundle/ruby/3.3.0/gems/stringio-3.1.2/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20241220-25148-y2ujht sitelibdir\=./.gem.20241220-25148-y2ujht clean
+
+current directory: C:/Users/Castraveti murati/Desktop/CloudAppDevelopment/task_management_system/vendor/bundle/ruby/3.3.0/gems/stringio-3.1.2/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20241220-25148-y2ujht sitelibdir\=./.gem.20241220-25148-y2ujht
+generating stringio-x64-mingw-ucrt.def
+compiling stringio.c
+linking shared-object stringio.so
+
+current directory: C:/Users/Castraveti murati/Desktop/CloudAppDevelopment/task_management_system/vendor/bundle/ruby/3.3.0/gems/stringio-3.1.2/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20241220-25148-y2ujht sitelibdir\=./.gem.20241220-25148-y2ujht install
+/usr/bin/install -c -m 0755 stringio.so ./.gem.20241220-25148-y2ujht
+
+current directory: C:/Users/Castraveti murati/Desktop/CloudAppDevelopment/task_management_system/vendor/bundle/ruby/3.3.0/gems/stringio-3.1.2/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20241220-25148-y2ujht sitelibdir\=./.gem.20241220-25148-y2ujht clean

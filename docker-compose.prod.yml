@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 21345
+      POSTGRES_DB: task_management_system_production
+    ports:
+      - "6666:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  app:
+    build:
+      context: .
+    environment:
+      DATABASE_URL: postgres://postgres:21345@db:5432/task_management_system_production
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+      - bundle-data:/usr/local/bundle
+
+volumes:
+  db-data:
+  bundle-data:

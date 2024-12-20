@@ -1,0 +1,32 @@
+current directory: C:/Users/Castraveti murati/Desktop/CloudAppDevelopment/task_management_system/vendor/bundle/ruby/3.3.0/gems/psych-5.2.2/ext/psych
+C:/Ruby33-x64/bin/ruby.exe extconf.rb
+checking for pkg-config for yaml-0.1... ["-IC:/Ruby33-x64/msys64/ucrt64/bin/../include ", "-LC:/Ruby33-x64/msys64/ucrt64/bin/../lib", "-lyaml"]
+checking for yaml.h... yes
+checking for yaml_get_version() in -lyaml... yes
+creating Makefile
+
+current directory: C:/Users/Castraveti murati/Desktop/CloudAppDevelopment/task_management_system/vendor/bundle/ruby/3.3.0/gems/psych-5.2.2/ext/psych
+make DESTDIR\= sitearchdir\=./.gem.20241220-25148-g6i728 sitelibdir\=./.gem.20241220-25148-g6i728 clean
+cd libyaml && make clean
+/bin/sh: line 1: cd: libyaml: No such file or directory
+make: [Makefile:287: clean-so] Error 1 (ignored)
+
+current directory: C:/Users/Castraveti murati/Desktop/CloudAppDevelopment/task_management_system/vendor/bundle/ruby/3.3.0/gems/psych-5.2.2/ext/psych
+make DESTDIR\= sitearchdir\=./.gem.20241220-25148-g6i728 sitelibdir\=./.gem.20241220-25148-g6i728
+generating psych-x64-mingw-ucrt.def
+compiling psych.c
+compiling psych_emitter.c
+compiling psych_parser.c
+compiling psych_to_ruby.c
+compiling psych_yaml_tree.c
+linking shared-object psych.so
+
+current directory: C:/Users/Castraveti murati/Desktop/CloudAppDevelopment/task_management_system/vendor/bundle/ruby/3.3.0/gems/psych-5.2.2/ext/psych
+make DESTDIR\= sitearchdir\=./.gem.20241220-25148-g6i728 sitelibdir\=./.gem.20241220-25148-g6i728 install
+/usr/bin/install -c -m 0755 psych.so ./.gem.20241220-25148-g6i728
+
+current directory: C:/Users/Castraveti murati/Desktop/CloudAppDevelopment/task_management_system/vendor/bundle/ruby/3.3.0/gems/psych-5.2.2/ext/psych
+make DESTDIR\= sitearchdir\=./.gem.20241220-25148-g6i728 sitelibdir\=./.gem.20241220-25148-g6i728 clean
+cd libyaml && make clean
+/bin/sh: line 1: cd: libyaml: No such file or directory
+make: [Makefile:287: clean-so] Error 1 (ignored)
