@@ -1,32 +1,13 @@
 <h1>All Projects</h1>
-
 <%= link_to 'New Project', new_project_path, class: 'btn btn-primary' %>
-
 <% if @projects.any? %>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @projects.each do |project| %>
-        <tr>
-          <td><%= link_to project.name, project_path(project) %></td>
-          <td><%= project.description %></td>
-          <td>
-            <%= link_to 'Edit', edit_project_path(project), class: 'btn btn-warning' %>
-            <%= form_with model: project, url: project_path(project), method: :delete, class: "d-inline" do %>
-              <%= submit_tag "Delete", class: 'btn btn-danger', data: { confirm: 'Are you sure?' } %>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <ul>
+    <% @projects.each do |project| %>
+      <li><%= link_to project.name, project_path(project) %></li>
+    <% end %>
+  </ul>
 <% else %>
-  <p>No projects found. Create a new project using the button above.</p>
+  <p>No projects available.</p>
 <% end %>
+
 
