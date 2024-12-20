@@ -26,3 +26,7 @@ cable:
 queue:
   <<: *default
   database: task_management_system_queue
+
+cache:
+  <<: *default
+  database: task_management_system_cache
