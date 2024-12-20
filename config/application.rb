@@ -13,7 +13,9 @@ module TaskManagementSystem
 
 
     
-    config.hosts << "ec2-3-86-180-143.compute-1.amazonaws.com"
+    # config/environments/production.rb
+    config.hosts << /ec2-.*\.compute-1\.amazonaws\.com/
+
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.

@@ -22,3 +22,7 @@ production:
 cable:
   <<: *default
   database: task_management_system_cable
+
+queue:
+  <<: *default
+  database: task_management_system_queue
